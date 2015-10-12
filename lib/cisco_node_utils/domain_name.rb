@@ -30,7 +30,7 @@ module Cisco
 
     def self.domainnames
       hash = {}
-      domains = config_get('domain_name', 'domain_name')
+      domains = config_get('dnsclient', 'domain_name')
       return hash if domains.nil?
 
       domains.each do |name|
@@ -44,11 +44,11 @@ module Cisco
     end
 
     def create
-      config_set('domain_name', 'domain_name', state: '', name: @name)
+      config_set('dnsclient', 'domain_name', state: '', name: @name)
     end
 
     def destroy
-      config_set('domain_name', 'domain_name', state: 'no', name: @name)
+      config_set('dnsclient', 'domain_name', state: 'no', name: @name)
     end
   end
 end
